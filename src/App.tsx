@@ -15,13 +15,13 @@ export default function Page() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
       heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+      heart.style.animationDuration = `${Math.random() * 3 + 3}s`; // Random speed (3-6s)
 
       container.appendChild(heart);
 
       setTimeout(() => {
         heart.remove();
-      }, 5000);
+      }, 6000); // Remove heart after animation
     };
 
     const interval = setInterval(createHeart, 500);
@@ -70,8 +70,13 @@ export default function Page() {
     <div className="-mt-16 flex h-screen flex-col items-center justify-center">
       {yesPressed ? (
         <>
-          <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Happy Bear" />
-          <div className="my-4 text-4xl font-bold">WOOOOOO!!! I love you Babe!! ;))</div>
+          <img
+            src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
+            alt="Happy Bear"
+          />
+          <div className="my-4 text-4xl font-bold">
+            WOOOOOO!!! I love you Babe!! ;))
+          </div>
         </>
       ) : (
         <>

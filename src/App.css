@@ -20,46 +20,6 @@ body {
   text-align: center;
 }
 
-/* Logo Animations */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms ease-in-out;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em var(--shadow-color));
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em var(--react-shadow));
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* Card and Documentation */
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 /* Floating Hearts */
 .heart-container {
   position: fixed;
@@ -68,39 +28,40 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none; /* Prevents interaction */
+  z-index: 9999; /* Ensures hearts appear on top */
 }
 
 /* Individual Heart */
 .heart {
   position: absolute;
   bottom: -50px;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   background-color: var(--heart-color);
   transform: rotate(-45deg);
   animation: floatUp 6s linear infinite, wiggle 3s ease-in-out infinite;
   opacity: 0.7;
 }
 
-/* Creates the heart shape */
+/* Create the heart shape using pseudo-elements */
 .heart::before,
 .heart::after {
   content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   background-color: var(--heart-color);
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -12.5px;
+  top: -15px;
   left: 0;
 }
 
 .heart::after {
   top: 0;
-  left: 12.5px;
+  left: 15px;
 }
 
 /* Animation for floating hearts */
@@ -121,6 +82,6 @@ body {
     transform: translateX(0) rotate(-45deg);
   }
   50% {
-    transform: translateX(10px) rotate(-45deg);
+    transform: translateX(15px) rotate(-45deg);
   }
 }
