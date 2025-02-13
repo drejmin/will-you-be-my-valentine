@@ -33,14 +33,14 @@ body {
 
 /* Individual Heart */
 .heart {
-  position: absolute !important;
-  bottom: -50px !important;
-  width: 30px !important;
-  height: 30px !important;
+  position: sticky;
+  bottom: -40px;
+  width: 30px;
+  height: 30px;
   background-color: var(--heart-color);
-  transform: rotate(-45deg) !important;
-  animation: floatUp 6s linear infinite, wiggle 3s ease-in-out infinite !important;
-  opacity: 0.7 !important;
+  transform: rotate(-45deg);
+  animation: floatUp 6s linear infinite, wiggle 3s ease-in-out infinite;
+  opacity: 0.7;
 }
 
 /* Create the heart shape using pseudo-elements */

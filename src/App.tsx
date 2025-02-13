@@ -1,36 +1,40 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
+import './App.css';
+import Hearts from './Hearts'
 
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
   const yesButtonSize = noCount * 20 + 16;
 
-  useEffect(() => {
-    const container = document.createElement("div");
-    container.classList.add("heart-container");
-    document.body.appendChild(container);
+  // useEffect(() => {
+  //   if (document.querySelector(".heart-container")) return;
 
-    const createHeart = () => {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.style.left = `${Math.random() * 100}vw`;
-      heart.style.animationDuration = `${Math.random() * 3 + 3}s`; // Random speed (3-6s)
+  //   const container = document.createElement("div");
+  //   container.classList.add("heart-container");
+  //   document.body.appendChild(container);
 
-      container.appendChild(heart);
+  //   const createHeart = () => {
+  //     const heart = document.createElement("div");
+  //     heart.classList.add("heart");
+  //     heart.style.left = `${Math.random() * 100}vw`; // Random X position
+  //     heart.style.animationDuration = `${Math.random() * 3 + 3}s`; // Random speed (3-6s)
 
-      setTimeout(() => {
-        heart.remove();
-      }, 6000); // Remove heart after animation
-    };
+  //     container.appendChild(heart);
 
-    const interval = setInterval(createHeart, 500);
+  //     setTimeout(() => {
+  //       heart.remove();
+  //     }, 6000); // Remove after animation
+  //   };
 
-    return () => {
-      clearInterval(interval);
-      container.remove();
-    };
-  }, []);
+  //   const interval = setInterval(createHeart, 500); // Generate hearts every 0.5s
+
+  //   return () => {
+  //     clearInterval(interval);
+  //     container.remove();
+  //   };
+  // }, []);
 
   const handleNoClick = () => {
     if (noCount < 20) {
@@ -68,6 +72,7 @@ export default function Page() {
 
   return (
     <div className="-mt-16 flex h-screen flex-col items-center justify-center">
+      <Hearts/>
       {yesPressed ? (
         <>
           <img
