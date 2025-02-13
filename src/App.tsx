@@ -1,13 +1,41 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
   const yesButtonSize = noCount * 20 + 16;
 
+  useEffect(() => {
+    const container = document.createElement("div");
+    container.classList.add("heart-container");
+    document.body.appendChild(container);
+
+    const createHeart = () => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    };
+
+    const interval = setInterval(createHeart, 500);
+
+    return () => {
+      clearInterval(interval);
+      container.remove();
+    };
+  }, []);
+
   const handleNoClick = () => {
-    setNoCount(noCount + 1);
+    if (noCount < 20) {
+      setNoCount((prev) => prev + 1);
+    }
   };
 
   const getNoButtonText = () => {
@@ -27,9 +55,12 @@ export default function Page() {
       ".",
       ".",
       ".",
-      "PRETTY PLEASE",
-      "collective sigh of all my ancestors",
-      "You're next answer better be yes",
+      "I'm asking nicely",
+      "Collective sigh of all my ancestors",
+      "Your next answer better be yes",
+      "I can't believe you",
+      "I'm done talking",
+      ".",
     ];
 
     return phrases[Math.min(noCount, phrases.length - 1)];
@@ -39,19 +70,22 @@ export default function Page() {
     <div className="-mt-16 flex h-screen flex-col items-center justify-center">
       {yesPressed ? (
         <>
-          <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" />
-          <div className="my-4 text-4xl font-bold">WOOOOOO!!! I love you pookie!! ;))</div>
+          <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Happy Bear" />
+          <div className="my-4 text-4xl font-bold">WOOOOOO!!! I love you Babe!! ;))</div>
         </>
       ) : (
         <>
           <img
             className="h-[200px]"
             src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
+            alt="Cute Bear with Roses"
           />
-          <h1 className="my-4 text-4xl">Will you be my Valentine?</h1>
+          <h1 className="my-4 text-4xl text-center">
+            Shanae Latrice Fields-Minor, will you be my Valentine?
+          </h1>
           <div className="flex items-center">
             <button
-              className={`mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700`}
+              className="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
               style={{ fontSize: yesButtonSize }}
               onClick={() => setYesPressed(true)}
             >
@@ -59,9 +93,12 @@ export default function Page() {
             </button>
             <button
               onClick={handleNoClick}
-              className=" rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+              className={`rounded px-4 py-2 font-bold text-white ${
+                noCount >= 20 ? "bg-gray-400 cursor-not-allowed" : "bg-red-500 hover:bg-red-700"
+              }`}
+              disabled={noCount >= 20}
             >
-              {noCount === 0 ? "No" : getNoButtonText()}
+              {noCount >= 20 ? "Well now you have no choice 😈" : noCount === 0 ? "No" : getNoButtonText()}
             </button>
           </div>
         </>
