@@ -12,22 +12,24 @@ export default function Page() {
 
   const getNoButtonText = () => {
     const phrases = [
-      "No",
+      "No?...Noooo? Really...ok",
       "Are you sure?",
       "What if I asked really nicely?",
-      "Pretty please",
-      "With a chocolate rice cake on top",
-      "What about a matcha frostie",
-      "PLEASE POOKIE",
-      "But :*(",
-      "I am going to die",
-      "Yep im dead",
-      "ok ur talking to nathan's ghost",
-      "please babe",
-      ":((((",
+      "Still no? Be real Nae",
+      "I'll get you flowers",
+      "I'll make you normal cookies",
+      "5 coupons for hold yous",
+      "Now you're just being stubborn",
+      "----_________----",
+      "You're extra",
+      "Imma leave",
+      "leaving",
+      ".",
+      ".",
+      ".",
       "PRETTY PLEASE",
-      "Estoy muerto",
-      "No :(",
+      "collective sigh of all my ancestors",
+      "You're next answer better be yes",
     ];
 
     return phrases[Math.min(noCount, phrases.length - 1)];
